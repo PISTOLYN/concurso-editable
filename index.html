@@ -6,44 +6,59 @@
 <title>Concurso editable</title>
 <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#3a0d00;--ink:#fff4dc;--panel:#4a1606;--line:#ff9a1f;--gold:#ffc83d;--brown:#2b0a02;--bad:#e5251f;--t1:#ffd37a;--t2:#ffd37a;--btn:#ffb21f;--btnInk:#2b0a02;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#071a3d;--ink:#fff;--panel:#0c2a5e;--line:#2f9bff;--gold:#ffc83d;--brown:#06173a;--bad:#e5251f;--btn:#ffc83d;--btnInk:#06173a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;min-height:100vh;color:var(--ink);font:800 18px/1.3 Nunito,system-ui,sans-serif;background:radial-gradient(ellipse at 50% 0,#ff9a1f 0,#c2410c 38%,#3a0d00 85%) fixed}
-.marq{overflow:hidden;white-space:nowrap;background:var(--gold);color:#2b0a02;padding:6px 0;font-weight:800}
+body{margin:0;min-height:100vh;color:var(--ink);font:800 18px/1.3 Nunito,system-ui,sans-serif;background:radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.28),transparent 50%),radial-gradient(circle at 12% 0,rgba(130,200,255,.75),transparent 32%),radial-gradient(circle at 88% 0,rgba(255,130,130,.7),transparent 32%),linear-gradient(90deg,#0b2f9e,#16207a 46%,#6b0f2a 54%,#b10f1d) fixed}
+.marq{overflow:hidden;white-space:nowrap;background:var(--gold);color:#06173a;padding:6px 0;font-weight:800}
 .marq span{display:inline-block;padding-left:100%;animation:mq 22s linear infinite}
 @keyframes mq{to{transform:translateX(-100%)}}
 @media(prefers-reduced-motion:reduce){.marq span{animation:none;padding-left:12px}}
-main{max-width:1000px;margin:0 auto;padding:12px}
-.ttl{margin:6px auto 18px;max-width:780px;text-align:center;padding:10px 22px;border-radius:44px;background:linear-gradient(#ff8a00,#e04a00);border:5px solid #ffd37a;box-shadow:0 0 0 3px #b34100,0 0 30px #ffb21f;color:#fff;font:400 clamp(24px,5vw,48px)/1.1 "Bowlby One",Nunito,sans-serif;text-shadow:0 3px 0 #9a2f00}
-.stage{display:grid;grid-template-columns:150px 1fr 150px;gap:14px;align-items:start}
-.team{border-radius:18px;border:4px solid var(--gold);background:linear-gradient(#ff8a00,#c93e00);padding:8px;text-align:center;color:#fff;text-transform:uppercase;font-size:18px;text-shadow:0 2px 0 #9a2f00}
-.team b{display:block;margin-top:6px;padding:8px 0;border-radius:12px;background:var(--brown);font:400 clamp(36px,7vw,64px)/1 "Bowlby One",Nunito,sans-serif;text-shadow:none}
-.team.first{box-shadow:0 0 0 5px #fff,0 0 30px 8px #ffe08a}
-.frame{position:relative;border-radius:28px;padding:16px;border:6px solid var(--gold);background:linear-gradient(#6b2200,#2b0a02);box-shadow:0 0 0 4px #ff8a00,0 0 40px #ffb21f}
-.frame::before{content:"";position:absolute;inset:-16px;border-radius:38px;border:7px dotted #fff3b0;pointer-events:none;filter:drop-shadow(0 0 5px #ffd37a)}
-.qs{background:var(--brown);border:2px solid #ff9a1f;border-radius:12px;padding:8px 12px;text-align:center;margin-bottom:12px;color:#fff;font:400 clamp(16px,2.6vw,24px)/1.2 "Bowlby One",Nunito,sans-serif}
-.tile{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;margin-bottom:9px;padding:5px 10px 5px 6px;border-radius:32px;border:3px solid #ff9a1f;background:var(--brown);color:#ffd37a;cursor:pointer;font:400 clamp(18px,3vw,28px)/1.1 "Bowlby One",Nunito,sans-serif;text-align:left}
-.tile .n{flex:none;width:42px;height:42px;border-radius:50%;background:linear-gradient(#ff9a1f,#e04a00);color:#fff;display:grid;place-items:center;font-size:24px}
-.tile .l{flex:1;letter-spacing:.25em;opacity:.7;text-transform:uppercase;overflow-wrap:anywhere}
-.tile.open{background:linear-gradient(#ff9a1f,#d94a00);color:#fff;border-color:#ffd37a}
-.tile.open .l{letter-spacing:normal;opacity:1}
-.tile .p{flex:none;min-width:76px;padding:4px 10px;border-radius:22px;background:var(--brown);border:2px solid #ffd37a;text-align:center;font-size:26px;line-height:1}
+main{max-width:1040px;margin:0 auto;padding:12px}
+.ttl{position:relative;margin:6px auto 18px;max-width:820px;text-align:center;padding:10px 60px;border-radius:50%/60%;background:linear-gradient(#e0151f,#a30a14);border:5px solid var(--gold);box-shadow:0 0 0 3px #ff8a00,0 0 30px rgba(255,200,60,.7);color:#fff;font:400 clamp(24px,5vw,48px)/1.1 "Bowlby One",Nunito,sans-serif;text-shadow:0 3px 0 #1a3fa0,0 0 14px rgba(255,255,255,.35)}
+.ttl::before,.ttl::after{content:"★";position:absolute;top:50%;transform:translateY(-50%);color:var(--gold);font-size:.8em;text-shadow:0 2px 0 #b34100}
+.ttl::before{left:18px}.ttl::after{right:18px}
+.stage{display:grid;grid-template-columns:170px 1fr 170px;gap:14px;align-items:start}
+.team{border-radius:18px;padding:8px;text-align:center;color:#fff}
+.team.t1{background:linear-gradient(#2a6bff,#0a2a8f);border:4px solid #9fd0ff;box-shadow:0 0 22px rgba(70,140,255,.8)}
+.team.t2{background:linear-gradient(#ff3b3b,#a30a14);border:4px solid #ffb0b0;box-shadow:0 0 22px rgba(255,70,70,.8)}
+.nm{display:block;padding:6px 4px;clip-path:polygon(8% 0,92% 0,100% 50%,92% 100%,8% 100%,0 50%);background:#06173a;font:400 17px "Bowlby One",Nunito,sans-serif;text-transform:uppercase}
+.team b{display:block;margin-top:10px;padding:10px 0;border-radius:12px;font:400 clamp(36px,7vw,64px)/1 "Bowlby One",Nunito,sans-serif;border:3px solid #fff}
+.t1 b{background:linear-gradient(#0a46ff,#0626a8);box-shadow:inset 0 0 14px #6aa8ff}
+.t2 b{background:linear-gradient(#ff1f1f,#b00a14);box-shadow:inset 0 0 14px #ff8a8a}
+.team.first{box-shadow:0 0 0 5px #fff,0 0 34px 10px #ffe08a}
+.frame{position:relative;border-radius:28px;padding:16px;border:6px solid var(--gold);background:linear-gradient(#0a1d4d,#050f2b);box-shadow:0 0 0 3px #ff8a00,0 0 36px rgba(255,200,60,.6)}
+.qs{background:#06173a;border:2px solid var(--line);border-radius:12px;padding:8px 12px;text-align:center;margin-bottom:12px;color:#fff;font:400 clamp(16px,2.6vw,24px)/1.2 "Bowlby One",Nunito,sans-serif}
+.tile{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;margin-bottom:9px;padding:5px 10px 5px 6px;border-radius:32px;border:3px solid var(--line);background:linear-gradient(#0b2250,#06173a);color:#9db8e6;cursor:pointer;font:400 clamp(18px,3vw,28px)/1.1 "Bowlby One",Nunito,sans-serif;text-align:left;box-shadow:0 0 10px rgba(47,155,255,.45)}
+.tile .n{flex:none;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff6a6a,#c4101a);border:3px solid var(--gold);color:#fff;display:grid;place-items:center;font-size:24px}
+.tile .l{flex:1;letter-spacing:.3em;text-transform:uppercase;overflow-wrap:anywhere;text-align:center}
+.tile.open{background:linear-gradient(#ffe066,#f2a900);color:#06173a;border-color:#fff3b0}
+.tile.open .l{letter-spacing:normal;text-align:left}
+.tile .p{flex:none;min-width:76px;padding:4px 10px;border-radius:22px;background:#06173a;color:#fff;border:2px solid var(--gold);text-align:center;font-size:26px;line-height:1}
 .tile .p small{display:block;font:800 10px Nunito,sans-serif;margin-top:2px}
 .lights{display:flex;justify-content:center;margin-top:6px}
-.strikes{display:flex;gap:14px;padding:6px 16px;border-radius:30px;background:var(--brown);border:3px solid #ff9a1f}
-.strikes i{width:44px;height:44px;border-radius:50%;border:4px solid var(--gold);background:#7a1a05;color:transparent;display:grid;place-items:center;font:400 26px "Bowlby One",sans-serif}
-.strikes i.on{background:var(--bad);color:#fff}
-.bankp{text-align:center;margin-top:8px;color:#ffd37a}
+.strikes{display:flex;gap:14px;padding:6px 18px;border-radius:30px;background:#06173a;border:3px solid var(--gold)}
+.strikes{gap:16px;padding:8px 20px}
+.strikes i{position:relative;width:70px;height:70px;border-radius:50%;border:5px solid var(--gold);background:#4a0c14;font-size:0;color:transparent;overflow:hidden}
+.strikes i::before,.strikes i::after{content:"";position:absolute;left:50%;top:50%;width:80%;height:22px;margin:-11px 0 0 -40%;border-radius:11px;background:#ffd21f;opacity:.22}
+.strikes i::before{transform:rotate(45deg)}
+.strikes i::after{transform:rotate(-45deg)}
+.strikes i.on{background:radial-gradient(circle at 35% 30%,#ff5a5a,#c4101a);box-shadow:0 0 18px 4px rgba(255,60,60,.8)}
+.strikes i.on::before,.strikes i.on::after{opacity:1;box-shadow:0 0 0 2px #7a0a10,0 0 8px #fff3b0}
+.bankp{text-align:center;margin-top:8px;color:#9fd0ff}
 .bankp span{font:400 24px "Bowlby One",sans-serif;color:#fff}
-.cap{margin:16px 0 12px;min-height:52px;padding:10px 14px;border-left:8px solid var(--gold);background:rgba(43,10,2,.75);border-radius:8px;font-size:clamp(18px,2.6vw,26px)}
+.cap{margin:16px 0 12px;min-height:52px;padding:10px 14px;border-left:8px solid var(--gold);background:rgba(6,23,58,.82);border-radius:8px;font-size:clamp(18px,2.6vw,26px)}
 .bar{display:flex;flex-wrap:wrap;gap:8px}
 button.b{background:var(--btn);color:var(--btnInk);border:0;border-radius:10px;padding:12px 16px;font:800 17px Nunito,system-ui,sans-serif;cursor:pointer;min-height:48px}
-button.b.alt{background:rgba(43,10,2,.6);color:var(--ink);border:2px solid var(--line)}
+button.b.alt{background:rgba(6,23,58,.7);color:var(--ink);border:2px solid var(--line)}
 button.b.red{background:var(--bad);color:#fff}
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.tile:focus-visible{outline:4px solid #fff;outline-offset:2px}
 .x{position:fixed;inset:0;display:none;place-items:center;font:400 40vmin/1 "Bowlby One",sans-serif;color:var(--bad);background:rgba(0,0,0,.45);pointer-events:none;z-index:20}
 .x.on{display:grid}
+.x i{position:relative;width:46vmin;height:46vmin}
+.x i::before,.x i::after{content:"";position:absolute;left:50%;top:50%;width:100%;height:24%;margin:-12% 0 0 -50%;border-radius:999px;background:#ff6200;box-shadow:0 0 40px rgba(255,98,0,.8)}
+.x i::before{transform:rotate(45deg)}
+.x i::after{transform:rotate(-45deg)}
 #menu{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;z-index:30;overflow:auto;padding:12px}
 #menu.on{display:block}
 .pan{max-width:760px;margin:0 auto;background:var(--panel);border:3px solid var(--line);border-radius:14px;padding:16px}
@@ -53,60 +68,110 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .pan input[type=text],.pan textarea,.pan select{width:100%;font:600 16px Nunito,system-ui,sans-serif;padding:9px;border-radius:8px;border:2px solid var(--line);background:var(--brown);color:var(--ink)}
 .pan textarea{min-height:150px}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
-.msg{margin-top:8px;font-weight:800;color:#ff8c8c}
-.hint{font-weight:600;opacity:.85;font-size:15px}
-@media(max-width:700px){.stage{grid-template-columns:1fr 1fr}.frame{grid-column:1/-1;order:3}}
+.msg{margin-top:8px;font-weight:800;color:#ff9a9a}
+.hint{font-weight:600;opacity:.9;font-size:15px}
+.marq{position:relative;z-index:1}
+main{position:relative;z-index:1}
+.beams{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.beam{position:absolute;top:-5%;width:24vmin;height:120vh;clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);transform-origin:50% 0;animation:sw 7s ease-in-out infinite alternate;mix-blend-mode:screen;opacity:.55}
+.beam.a{background:linear-gradient(rgba(150,200,255,.55),transparent 75%)}
+.beam.r{background:linear-gradient(rgba(255,150,150,.55),transparent 75%)}
+@keyframes sw{from{transform:rotate(calc(var(--r) * -1))}to{transform:rotate(var(--r))}}
+.bulbs{position:absolute;inset:-16px;pointer-events:none}
+.bulbs i{position:absolute;width:13px;height:13px;border-radius:50%;transform:translate(-50%,-50%);background:#fff3b0;animation:bulb 1.6s ease-in-out infinite}
+.bulbs i:nth-child(even){background:#ffd21f}
+@keyframes bulb{0%,100%{opacity:.25;box-shadow:0 0 2px #ffd37a}50%{opacity:1;box-shadow:0 0 10px 4px #ffe08a}}
+.ttl{animation:glow 2.2s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 3px #ff8a00,0 0 52px rgba(255,225,110,1)}}
+.ttl::before,.ttl::after{animation:tw 1.2s ease-in-out infinite alternate}
+@keyframes tw{from{transform:translateY(-50%) scale(.85);opacity:.6}to{transform:translateY(-50%) scale(1.15);opacity:1}}
+@media(prefers-reduced-motion:reduce){.bulbs i,.beam,.ttl,.ttl::before,.ttl::after{animation:none}.bulbs i{opacity:1}}
+.dock{display:none;position:fixed;left:0;right:0;bottom:0;z-index:15;max-height:46vh;overflow:auto;padding:12px 12px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(6,15,40,.95);border-top:4px solid var(--gold)}
+.dock.on{display:block}
+body.dockon main{padding-bottom:42vh}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;z-index:30;align-items:center;justify-content:center;padding:12px;overflow:auto}
+.ov.on{display:flex}
+.hubp{width:min(1000px,100%);background:#0c0c0c;border:3px solid #d4af37;padding:18px 22px 24px;text-align:center}
+.hsub{color:#f0d77a;font-weight:800;font-size:18px;text-transform:uppercase}
+.hh{margin:0 0 16px;color:#d4af37;font:800 clamp(30px,5vw,44px) Nunito,system-ui,sans-serif}
+.hg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hb{background:#1d1d1d;border:2px solid #d4af37;color:#d4af37;padding:18px 10px;font:800 clamp(15px,2.2vw,20px) Nunito,system-ui,sans-serif;text-transform:uppercase;cursor:pointer}
+.hb:hover{background:#2c2c2c}
+.hb:focus-visible{outline:4px solid #fff;outline-offset:2px}
+.pan{background:#0c0c0c;border-color:#d4af37}
+.pan h2,.pan h3{color:#d4af37}
+@media(max-width:700px){.hg{grid-template-columns:1fr}}
+@media(max-width:700px){.stage{grid-template-columns:1fr 1fr}.frame{grid-column:1/-1;order:3}.ttl{padding:10px 40px}}
 </style>
 </head>
 <body>
+<div class="beams" aria-hidden="true"><i class="beam a" style="left:4%;--r:-16deg"></i><i class="beam a" style="left:22%;--r:14deg;animation-delay:-2s"></i><i class="beam r" style="left:60%;--r:-14deg;animation-delay:-4s"></i><i class="beam r" style="left:80%;--r:16deg;animation-delay:-1s"></i></div>
 <div class="marq" id="mq"><span id="mqt"></span></div>
 <main>
   <div class="ttl" id="ttl"></div>
   <div class="stage">
-    <div class="team t1" id="tm0">Equipo 1<b id="s0">0</b></div>
-    <div class="frame">
+    <div class="team t1" id="tm0"><span class="nm">Equipo azul</span><b id="s0">0</b></div>
+    <div class="frame"><div class="bulbs" id="bulbs"></div>
       <div class="qs" id="q"></div>
       <div id="bd"></div>
       <div class="lights"><div class="strikes" id="st"></div></div>
       <div class="bankp">Banco: <span id="bk">0</span></div>
     </div>
-    <div class="team t2" id="tm1">Equipo 2<b id="s1">0</b></div>
+    <div class="team t2" id="tm1"><span class="nm">Equipo rojo</span><b id="s1">0</b></div>
   </div>
-  <div class="cap" id="cap" aria-live="polite">Pulsa «Leer pregunta» para que el conductor virtual hable.</div>
-  <div class="bar">
+  <div class="cap" id="cap" aria-live="polite">Pulsa M para abrir el menú y los controles del juego.</div>
+  <div class="dock" id="dock"><div class="bar">
     <button class="b" id="bRead">Leer pregunta (L)</button>
     <button class="b" id="bNext1">Revelar siguiente (Espacio)</button>
     <button class="b red" id="bErr">Error (X)</button>
-    <button class="b" id="bA0">Banco al equipo 1</button>
-    <button class="b" id="bA1">Banco al equipo 2</button>
+    <button class="b alt" id="bClr">Reiniciar las X (C)</button>
+    <button class="b" id="bA0">Banco al equipo azul</button>
+    <button class="b" id="bA1">Banco al equipo rojo</button>
     <button class="b alt" id="bUnlock">Habilitar pulsadores (R)</button>
     <button class="b alt" id="bAll">Mostrar todas</button>
     <button class="b alt" id="bQ">Siguiente pregunta (→)</button>
     <button class="b alt" id="bFs">Pantalla completa (F)</button>
     <button class="b alt" id="bMenu">Menú (M)</button>
+    <button class="b alt" id="bHide">Ocultar panel</button>
   </div>
-  <p class="hint" id="keys"></p>
+  <p class="hint" id="keys"></p></div>
 </main>
-<div class="x" id="xx">✕</div>
+<div class="x" id="xx"><i></i></div>
 
+<div id="hub" class="ov" role="dialog" aria-label="Menú"><div class="hubp">
+  <div class="hsub" id="hsub"></div><h2 class="hh">MENÚ</h2>
+  <div class="hg">
+    <button class="hb" id="hCtl">Panel del conductor</button>
+    <button class="hb" id="hQ">Editar preguntas</button>
+    <button class="hb" id="hEv">Nombre del evento</button>
+    <button class="hb" id="hKey">Configurar teclado</button>
+    <button class="hb" id="hVoz">Voz del conductor</button>
+    <button class="hb" id="hFs">Pantalla completa</button>
+    <button class="hb" id="hClose">Cerrar menú</button>
+    <button class="hb" id="hExit">Cerrar programa</button>
+  </div></div></div>
 <div id="menu" role="dialog" aria-label="Menú de administración"><div class="pan">
   <h2>Menú de administración</h2>
-  <h3>Preguntas</h3>
+  <h3 id="sPreg">Preguntas</h3>
   <label for="sel">Pregunta a editar</label><select id="sel"></select>
   <label for="eq">Texto de la pregunta</label><input type="text" id="eq">
   <label for="ea">Respuestas, una por línea: respuesta | puntos (máximo 8)</label><textarea id="ea"></textarea>
   <div class="row"><button class="b" id="eSave">Guardar pregunta</button><button class="b alt" id="eNew">Nueva pregunta</button><button class="b alt" id="eDup">Duplicar</button><button class="b red" id="eDel">Eliminar</button></div>
   <div class="msg" id="emsg" role="status"></div>
-  <h3>Voz</h3>
+  <h3 id="sVoz">Voz</h3>
   <label><input type="checkbox" id="vOn"> El conductor virtual habla preguntas y respuestas</label>
   <label for="vSel">Voz</label><select id="vSel"></select>
   <label for="vRate">Velocidad</label><input type="range" id="vRate" min="0.6" max="1.4" step="0.1" value="1">
   <div class="row"><button class="b alt" id="vTest">Probar voz</button></div>
-  <h3>Marquesina</h3>
+  <h3 id="sMq">Nombre del evento y marquesina</h3>
   <label for="mqIn">Mensaje superior</label><input type="text" id="mqIn">
-  <label for="ttIn">Título del programa</label><input type="text" id="ttIn">
-  <h3>Pulsadores</h3>
+  <label for="ttIn">Nombre del evento (título)</label><input type="text" id="ttIn">
+  <h3 id="sKeys">Configurar teclado</h3>
   <div class="row"><span id="k0"></span><button class="b alt" id="kc0">Cambiar tecla</button><span id="k1"></span><button class="b alt" id="kc1">Cambiar tecla</button></div>
+  <div class="row"><span id="k2"></span><button class="b alt" id="kc2">Cambiar tecla</button></div>
+  <div class="row"><span id="k3"></span><button class="b alt" id="kc3">Cambiar tecla</button></div>
+  <div class="row"><span id="k4"></span><button class="b alt" id="kc4">Cambiar tecla</button></div>
+  <div class="row"><span id="k5"></span><button class="b alt" id="kc5">Cambiar tecla</button></div>
   <div class="msg" id="kmsg" role="status"></div>
   <div class="row" style="margin-top:18px"><button class="b" id="mClose">Volver al juego (Esc)</button><button class="b alt" id="mReset">Restaurar preguntas de ejemplo</button></div>
 </div></div>
@@ -122,6 +187,8 @@ var S={qs:JSON.parse(JSON.stringify(DEF)),voice:true,vName:"",rate:1,mq:"Bienven
 try{var raw=localStorage.getItem("concurso_v1");if(raw){var o=JSON.parse(raw);if(o&&o.qs&&o.qs.length)S=o}}catch(e){}
 function save(){try{localStorage.setItem("concurso_v1",JSON.stringify(S))}catch(e){}}
 var $=function(i){return document.getElementById(i)};
+var NM=["azul","rojo"];
+function AW(){return S.awKeys||["a","s"]}
 var G={qi:0,open:[],bank:0,err:0,sc:[0,0],first:null,locked:false,ei:0,cap:-1,max:3};
 var AC=null;
 function tone(f,d,t,dl){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=.15;o.connect(g);g.connect(AC.destination);var s=AC.currentTime+(dl||0);g.gain.setValueAtTime(.15,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.start(s);o.stop(s+d)}catch(e){}}
@@ -147,8 +214,8 @@ function render(){
   var st=$("st");st.innerHTML="";for(var k=0;k<G.max;k++){var i=document.createElement("i");i.textContent="✕";if(k<G.err)i.className="on";st.appendChild(i)}
   $("s0").textContent=G.sc[0];$("s1").textContent=G.sc[1];$("bk").textContent=G.bank;
   $("tm0").className="team t1"+(G.first===0?" first":"");$("tm1").className="team t2"+(G.first===1?" first":"");
-  $("ttl").textContent=S.title||"CONCURSO EN VIVO";$("mqt").textContent=S.mq||"";$("mq").style.display=S.mq?"":"none";
-  $("keys").textContent="Pulsadores: equipo 1 = "+S.keys[0].toUpperCase()+", equipo 2 = "+S.keys[1].toUpperCase()+". Teclas 1–8 revelan respuestas.";
+  $("ttl").textContent=S.title||"CONCURSO EN VIVO";$("mqt").textContent=S.mq||"";$("bErr").textContent="Error ("+(S.errKey||"x").toUpperCase()+")";$("bClr").textContent="Reiniciar las X ("+(S.clrKey||"c").toUpperCase()+")";$("bA0").textContent="Banco al equipo azul ("+AW()[0].toUpperCase()+")";$("bA1").textContent="Banco al equipo rojo ("+AW()[1].toUpperCase()+")";$("mq").style.display=S.mq?"":"none";
+  $("keys").textContent="Pulsadores: azul = "+S.keys[0].toUpperCase()+", rojo = "+S.keys[1].toUpperCase()+". Error = "+(S.errKey||"x").toUpperCase()+". Reiniciar X = "+(S.clrKey||"c").toUpperCase()+". Puntos: azul = "+AW()[0].toUpperCase()+", rojo = "+AW()[1].toUpperCase()+". Teclas 1–8 revelan respuestas.";
 }
 function reveal(i){
   var a=cur().a[i];if(!a||G.open.indexOf(i)>-1)return;
@@ -162,19 +229,23 @@ function error(){
   var x=$("xx");x.className="x on";setTimeout(function(){x.className="x"},800);render();
   say(G.err>=G.max?"Error. Son tres errores, pasa el turno al otro equipo.":"Error. Llevan "+G.err+(G.err===1?" error.":" errores."));
 }
-function award(t){var n=G.bank;G.sc[t]+=n;G.bank=0;tone(660,.2);tone(990,.4,"sine",.2);render();say("El equipo "+(t+1)+" gana "+n+" puntos. Marcador: "+G.sc[0]+" a "+G.sc[1]+".")}
-function buzz(t){if(G.locked)return;G.locked=true;G.first=t;tone(600,.25,"square");render();say("¡Equipo "+(t+1)+" respondió primero!")}
+function clearErr(){G.err=0;render();say("Errores reiniciados.")}
+function award(t){var n=G.bank;G.sc[t]+=n;G.bank=0;tone(660,.2);tone(990,.4,"sine",.2);render();say("El equipo "+NM[t]+" gana "+n+" puntos. Marcador: "+G.sc[0]+" a "+G.sc[1]+".")}
+function buzz(t){if(G.locked)return;G.locked=true;G.first=t;tone(600,.25,"square");render();say("¡Equipo "+NM[t]+" respondió primero!")}
 function unlock(){G.locked=false;G.first=null;render();say("Pulsadores habilitados.")}
 function readQ(){say(cur().q+". Hay "+cur().a.length+" respuestas en el tablero.")}
-function nextQ(){G.qi=(G.qi+1)%S.qs.length;G.open=[];G.bank=0;G.err=0;G.first=null;G.locked=false;render();readQ()}
+function nextQ(){G.qi=(G.qi+1)%S.qs.length;G.open=[];G.bank=0;G.first=null;G.locked=false;render();readQ()}
 function fs(){try{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen()}catch(e){}}
+function hub(on){$("hub").className=on?"ov on":"ov";if(on)$("hsub").textContent=S.title||"CONCURSO EN VIVO"}
+function dock(on){$("dock").className=on?"dock on":"dock";document.body.classList.toggle("dockon",on)}
+function openEd(id){hub(false);menu(true);var el=$(id);if(el)el.scrollIntoView()}
 function menu(on){$("menu").className=on?"on":"";if(on){fillMenu()}else{cap=null;render()}}
 var cap=null;
 function fillMenu(){
   var s=$("sel");s.innerHTML="";S.qs.forEach(function(q,i){var o=document.createElement("option");o.value=i;o.textContent=(i+1)+". "+q.q.slice(0,60);s.appendChild(o)});
   if(G.ei>=S.qs.length)G.ei=S.qs.length-1;s.value=G.ei;loadEd();
   $("vOn").checked=S.voice;$("vRate").value=S.rate;$("mqIn").value=S.mq;$("ttIn").value=S.title||"CONCURSO EN VIVO";loadVoices();
-  $("k0").textContent="Equipo 1: "+S.keys[0].toUpperCase();$("k1").textContent="Equipo 2: "+S.keys[1].toUpperCase();
+  $("k0").textContent="Azul: "+S.keys[0].toUpperCase();$("k1").textContent="Rojo: "+S.keys[1].toUpperCase();$("k2").textContent="Error: "+(S.errKey||"x").toUpperCase();$("k3").textContent="Reiniciar las X: "+(S.clrKey||"c").toUpperCase();$("k4").textContent="Puntos al equipo azul: "+AW()[0].toUpperCase();$("k5").textContent="Puntos al equipo rojo: "+AW()[1].toUpperCase();
 }
 function loadEd(){var q=S.qs[G.ei];$("eq").value=q.q;$("ea").value=q.a.map(function(a){return a[0]+" | "+a[1]}).join("\n");$("emsg").textContent=""}
 function parseEd(){
@@ -198,25 +269,35 @@ $("vTest").onclick=function(){say("Hola, soy el conductor virtual. Bienvenidos a
 $("mqIn").oninput=function(){S.mq=this.value;save()};
 $("ttIn").oninput=function(){S.title=this.value;save()};
 $("mReset").onclick=function(){if(confirm("Se reemplazarán todas las preguntas por las de ejemplo. ¿Continuar?")){S.qs=JSON.parse(JSON.stringify(DEF));G.qi=0;G.open=[];G.bank=0;save();fillMenu()}};
-[0,1].forEach(function(t){$("kc"+t).onclick=function(){cap=t;$("kmsg").textContent="Presiona la tecla que deseas usar para el equipo "+(t+1)+"…"}});
+[0,1,2,3,4,5].forEach(function(t){$("kc"+t).onclick=function(){cap=t;$("kmsg").textContent="Presiona la tecla que deseas usar para "+(t===5?"dar los puntos al equipo rojo":t===4?"dar los puntos al equipo azul":t===3?"reiniciar las X":t===2?"marcar error":"el equipo "+NM[t])+"…"}});
 $("mClose").onclick=function(){menu(false)};
-$("bRead").onclick=readQ;$("bNext1").onclick=revealNext;$("bErr").onclick=error;$("bA0").onclick=function(){award(0)};$("bA1").onclick=function(){award(1)};
-$("bUnlock").onclick=unlock;$("bAll").onclick=revealAll;$("bQ").onclick=nextQ;$("bFs").onclick=fs;$("bMenu").onclick=function(){menu(true)};
+$("bRead").onclick=readQ;$("bNext1").onclick=revealNext;$("bErr").onclick=error;$("bClr").onclick=clearErr;$("bA0").onclick=function(){award(0)};$("bA1").onclick=function(){award(1)};
+$("bUnlock").onclick=unlock;$("bAll").onclick=revealAll;$("bQ").onclick=nextQ;$("bFs").onclick=fs;$("bMenu").onclick=function(){hub(true)};$("bHide").onclick=function(){dock(false)};
+$("hCtl").onclick=function(){hub(false);dock(true)};$("hQ").onclick=function(){openEd("sPreg")};$("hEv").onclick=function(){openEd("sMq")};$("hKey").onclick=function(){openEd("sKeys")};$("hVoz").onclick=function(){openEd("sVoz")};
+$("hFs").onclick=function(){hub(false);fs()};$("hClose").onclick=function(){hub(false)};
+$("hExit").onclick=function(){if(confirm("¿Cerrar el programa?")){try{window.close()}catch(e){}}};
 document.addEventListener("keydown",function(e){
   var tg=e.target&&e.target.tagName,typing=/INPUT|TEXTAREA|SELECT/.test(tg||"");
   if(cap!==null&&!typing){e.preventDefault();var k=e.key.toLowerCase();if(k==="escape"){cap=null;$("kmsg").textContent="";return}
     if(k.length!==1){$("kmsg").textContent="Elige una letra o un número.";return}
-    if(S.keys[1-cap]===k){$("kmsg").textContent="Esa tecla ya la usa el otro equipo.";return}
-    S.keys[cap]=k;save();cap=null;$("kmsg").textContent="Tecla guardada.";fillMenu();return}
-  if(e.key==="Escape"){if($("menu").className==="on")menu(false);return}
+    var rsv=[" ","m","r","l","f","1","2","3","4","5","6","7","8"];
+    var others=[S.keys[0],S.keys[1],S.errKey||"x",S.clrKey||"c",AW()[0],AW()[1]].filter(function(_,i){return i!==cap});
+    if(rsv.indexOf(k)>-1||others.indexOf(k)>-1){$("kmsg").textContent="Esa tecla ya está en uso. Elige otra.";return}
+    if(cap>3){S.awKeys=AW().slice();S.awKeys[cap-4]=k}else if(cap===3)S.clrKey=k;else if(cap===2)S.errKey=k;else S.keys[cap]=k;save();cap=null;$("kmsg").textContent="Tecla guardada.";fillMenu();return}
+  if(e.key==="Escape"){if($("menu").className==="on")menu(false);else if($("hub").className==="ov on")hub(false);else if($("dock").className==="dock on")dock(false);return}
   if(typing||e.ctrlKey||e.metaKey||e.altKey)return;
   var k=e.key.toLowerCase();
   if($("menu").className==="on")return;
-  if(k==="m"){menu(true);return}
+  if(k==="m"){if($("hub").className==="ov on")hub(false);else if($("dock").className==="dock on")dock(false);else hub(true);return}
+  if($("hub").className==="ov on")return;
   if(k===S.keys[0]){buzz(0);return}if(k===S.keys[1]){buzz(1);return}
   if(/^[1-8]$/.test(k)){reveal(+k-1);return}
-  if(k===" "){e.preventDefault();revealNext()}else if(k==="x")error();else if(k==="r")unlock();else if(k==="l")readQ();else if(k==="f")fs();else if(k==="arrowright")nextQ();
+  if(k===" "){e.preventDefault();revealNext()}else if(k===(S.errKey||"x"))error();else if(k===(S.clrKey||"c"))clearErr();else if(k===AW()[0])award(0);else if(k===AW()[1])award(1);else if(k==="r")unlock();else if(k==="l")readQ();else if(k==="f")fs();else if(k==="arrowright")nextQ();
 });
+(function(){var b=$("bulbs");if(!b)return;var T=20,V=11,n=0;
+function add(x,y){var d=document.createElement("i");d.style.left=x+"%";d.style.top=y+"%";d.style.animationDelay=(-n*0.08)+"s";n++;b.appendChild(d)}
+var i,j;for(i=0;i<T;i++)add(i*100/T,0);for(j=0;j<V;j++)add(100,j*100/V);for(i=T;i>0;i--)add(i*100/T,100);for(j=V;j>0;j--)add(0,j*100/V);
+})();
 render();
 </script>
 </body>
