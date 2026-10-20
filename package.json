@@ -1,0 +1,31 @@
+{
+  "name": "concurso-editable",
+  "version": "1.0.0",
+  "description": "Concurso editable de preguntas y respuestas con voz",
+  "main": "main.js",
+  "author": "Tu nombre",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64 --publish never && electron-builder --win --ia32 --publish never"
+  },
+  "devDependencies": {
+    "electron": "22.3.27",
+    "electron-builder": "24.13.3"
+  },
+  "build": {
+    "appId": "com.ejemplo.concursoeditable",
+    "productName": "Concurso Editable",
+    "files": ["index.html", "main.js"],
+    "win": {
+      "target": ["nsis", "portable"],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concurso editable</title>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#3a0d00;--ink:#fff4dc;--panel:#4a1606;--line:#ff9a1f;--gold:#ffc83d;--brown:#2b0a02;--bad:#e5251f;--t1:#ffd37a;--t2:#ffd37a;--btn:#ffb21f;--btnInk:#2b0a02;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;color:var(--ink);font:800 18px/1.3 Nunito,system-ui,sans-serif;background:radial-gradient(ellipse at 50% 0,#ff9a1f 0,#c2410c 38%,#3a0d00 85%) fixed}
+.marq{overflow:hidden;white-space:nowrap;background:var(--gold);color:#2b0a02;padding:6px 0;font-weight:800}
+.marq span{display:inline-block;padding-left:100%;animation:mq 22s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+@media(prefers-reduced-motion:reduce){.marq span{animation:none;padding-left:12px}}
+main{max-width:1000px;margin:0 auto;padding:12px}
+.ttl{margin:6px auto 18px;max-width:780px;text-align:center;padding:10px 22px;border-radius:44px;background:linear-gradient(#ff8a00,#e04a00);border:5px solid #ffd37a;box-shadow:0 0 0 3px #b34100,0 0 30px #ffb21f;color:#fff;font:400 clamp(24px,5vw,48px)/1.1 "Bowlby One",Nunito,sans-serif;text-shadow:0 3px 0 #9a2f00}
+.stage{display:grid;grid-template-columns:150px 1fr 150px;gap:14px;align-items:start}
+.team{border-radius:18px;border:4px solid var(--gold);background:linear-gradient(#ff8a00,#c93e00);padding:8px;text-align:center;color:#fff;text-transform:uppercase;font-size:18px;text-shadow:0 2px 0 #9a2f00}
+.team b{display:block;margin-top:6px;padding:8px 0;border-radius:12px;background:var(--brown);font:400 clamp(36px,7vw,64px)/1 "Bowlby One",Nunito,sans-serif;text-shadow:none}
+.team.first{box-shadow:0 0 0 5px #fff,0 0 30px 8px #ffe08a}
+.frame{position:relative;border-radius:28px;padding:16px;border:6px solid var(--gold);background:linear-gradient(#6b2200,#2b0a02);box-shadow:0 0 0 4px #ff8a00,0 0 40px #ffb21f}
+.frame::before{content:"";position:absolute;inset:-16px;border-radius:38px;border:7px dotted #fff3b0;pointer-events:none;filter:drop-shadow(0 0 5px #ffd37a)}
+.qs{background:var(--brown);border:2px solid #ff9a1f;border-radius:12px;padding:8px 12px;text-align:center;margin-bottom:12px;color:#fff;font:400 clamp(16px,2.6vw,24px)/1.2 "Bowlby One",Nunito,sans-serif}
+.tile{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;margin-bottom:9px;padding:5px 10px 5px 6px;border-radius:32px;border:3px solid #ff9a1f;background:var(--brown);color:#ffd37a;cursor:pointer;font:400 clamp(18px,3vw,28px)/1.1 "Bowlby One",Nunito,sans-serif;text-align:left}
+.tile .n{flex:none;width:42px;height:42px;border-radius:50%;background:linear-gradient(#ff9a1f,#e04a00);color:#fff;display:grid;place-items:center;font-size:24px}
+.tile .l{flex:1;letter-spacing:.25em;opacity:.7;text-transform:uppercase;overflow-wrap:anywhere}
+.tile.open{background:linear-gradient(#ff9a1f,#d94a00);color:#fff;border-color:#ffd37a}
+.tile.open .l{letter-spacing:normal;opacity:1}
+.tile .p{flex:none;min-width:76px;padding:4px 10px;border-radius:22px;background:var(--brown);border:2px solid #ffd37a;text-align:center;font-size:26px;line-height:1}
+.tile .p small{display:block;font:800 10px Nunito,sans-serif;margin-top:2px}
+.lights{display:flex;justify-content:center;margin-top:6px}
+.strikes{display:flex;gap:14px;padding:6px 16px;border-radius:30px;background:var(--brown);border:3px solid #ff9a1f}
+.strikes i{width:44px;height:44px;border-radius:50%;border:4px solid var(--gold);background:#7a1a05;color:transparent;display:grid;place-items:center;font:400 26px "Bowlby One",sans-serif}
+.strikes i.on{background:var(--bad);color:#fff}
+.bankp{text-align:center;margin-top:8px;color:#ffd37a}
+.bankp span{font:400 24px "Bowlby One",sans-serif;color:#fff}
+.cap{margin:16px 0 12px;min-height:52px;padding:10px 14px;border-left:8px solid var(--gold);background:rgba(43,10,2,.75);border-radius:8px;font-size:clamp(18px,2.6vw,26px)}
+.bar{display:flex;flex-wrap:wrap;gap:8px}
+button.b{background:var(--btn);color:var(--btnInk);border:0;border-radius:10px;padding:12px 16px;font:800 17px Nunito,system-ui,sans-serif;cursor:pointer;min-height:48px}
+button.b.alt{background:rgba(43,10,2,.6);color:var(--ink);border:2px solid var(--line)}
+button.b.red{background:var(--bad);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.tile:focus-visible{outline:4px solid #fff;outline-offset:2px}
+.x{position:fixed;inset:0;display:none;place-items:center;font:400 40vmin/1 "Bowlby One",sans-serif;color:var(--bad);background:rgba(0,0,0,.45);pointer-events:none;z-index:20}
+.x.on{display:grid}
+#menu{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;z-index:30;overflow:auto;padding:12px}
+#menu.on{display:block}
+.pan{max-width:760px;margin:0 auto;background:var(--panel);border:3px solid var(--line);border-radius:14px;padding:16px}
+.pan h2{margin:0 0 8px;font:400 24px "Bowlby One",Nunito,sans-serif}
+.pan h3{margin:18px 0 6px}
+.pan label{display:block;margin:8px 0 4px;font-weight:800}
+.pan input[type=text],.pan textarea,.pan select{width:100%;font:600 16px Nunito,system-ui,sans-serif;padding:9px;border-radius:8px;border:2px solid var(--line);background:var(--brown);color:var(--ink)}
+.pan textarea{min-height:150px}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
+.msg{margin-top:8px;font-weight:800;color:#ff8c8c}
+.hint{font-weight:600;opacity:.85;font-size:15px}
+@media(max-width:700px){.stage{grid-template-columns:1fr 1fr}.frame{grid-column:1/-1;order:3}}
+</style>
+</head>
+<body>
+<div class="marq" id="mq"><span id="mqt"></span></div>
+<main>
+  <div class="ttl" id="ttl"></div>
+  <div class="stage">
+    <div class="team t1" id="tm0">Equipo 1<b id="s0">0</b></div>
+    <div class="frame">
+      <div class="qs" id="q"></div>
+      <div id="bd"></div>
+      <div class="lights"><div class="strikes" id="st"></div></div>
+      <div class="bankp">Banco: <span id="bk">0</span></div>
+    </div>
+    <div class="team t2" id="tm1">Equipo 2<b id="s1">0</b></div>
+  </div>
+  <div class="cap" id="cap" aria-live="polite">Pulsa «Leer pregunta» para que el conductor virtual hable.</div>
+  <div class="bar">
+    <button class="b" id="bRead">Leer pregunta (L)</button>
+    <button class="b" id="bNext1">Revelar siguiente (Espacio)</button>
+    <button class="b red" id="bErr">Error (X)</button>
+    <button class="b" id="bA0">Banco al equipo 1</button>
+    <button class="b" id="bA1">Banco al equipo 2</button>
+    <button class="b alt" id="bUnlock">Habilitar pulsadores (R)</button>
+    <button class="b alt" id="bAll">Mostrar todas</button>
+    <button class="b alt" id="bQ">Siguiente pregunta (→)</button>
+    <button class="b alt" id="bFs">Pantalla completa (F)</button>
+    <button class="b alt" id="bMenu">Menú (M)</button>
+  </div>
+  <p class="hint" id="keys"></p>
+</main>
+<div class="x" id="xx">✕</div>
+
+<div id="menu" role="dialog" aria-label="Menú de administración"><div class="pan">
+  <h2>Menú de administración</h2>
+  <h3>Preguntas</h3>
+  <label for="sel">Pregunta a editar</label><select id="sel"></select>
+  <label for="eq">Texto de la pregunta</label><input type="text" id="eq">
+  <label for="ea">Respuestas, una por línea: respuesta | puntos (máximo 8)</label><textarea id="ea"></textarea>
+  <div class="row"><button class="b" id="eSave">Guardar pregunta</button><button class="b alt" id="eNew">Nueva pregunta</button><button class="b alt" id="eDup">Duplicar</button><button class="b red" id="eDel">Eliminar</button></div>
+  <div class="msg" id="emsg" role="status"></div>
+  <h3>Voz</h3>
+  <label><input type="checkbox" id="vOn"> El conductor virtual habla preguntas y respuestas</label>
+  <label for="vSel">Voz</label><select id="vSel"></select>
+  <label for="vRate">Velocidad</label><input type="range" id="vRate" min="0.6" max="1.4" step="0.1" value="1">
+  <div class="row"><button class="b alt" id="vTest">Probar voz</button></div>
+  <h3>Marquesina</h3>
+  <label for="mqIn">Mensaje superior</label><input type="text" id="mqIn">
+  <label for="ttIn">Título del programa</label><input type="text" id="ttIn">
+  <h3>Pulsadores</h3>
+  <div class="row"><span id="k0"></span><button class="b alt" id="kc0">Cambiar tecla</button><span id="k1"></span><button class="b alt" id="kc1">Cambiar tecla</button></div>
+  <div class="msg" id="kmsg" role="status"></div>
+  <div class="row" style="margin-top:18px"><button class="b" id="mClose">Volver al juego (Esc)</button><button class="b alt" id="mReset">Restaurar preguntas de ejemplo</button></div>
+</div></div>
+
+<script>
+var DEF=[
+{q:"Menciona algo que la gente lleva en la mochila a la escuela",a:[["Cuadernos",35],["Lápices",25],["Lonche",18],["Botella de agua",12],["Libros",10]]},
+{q:"Dime un platillo mexicano famoso",a:[["Tacos",40],["Mole",20],["Pozole",15],["Enchiladas",12],["Tamales",8],["Chiles en nogada",5]]},
+{q:"Algo que haces al despertar",a:[["Bañarte",30],["Desayunar",25],["Cepillarte los dientes",20],["Revisar el celular",15],["Estirarte",10]]},
+{q:"Una razón para llegar tarde al trabajo",a:[["Tráfico",40],["Se quedó dormido",30],["Falla del carro",15],["Lluvia",10],["Se le olvidó algo",5]]}
+];
+var S={qs:JSON.parse(JSON.stringify(DEF)),voice:true,vName:"",rate:1,mq:"Bienvenidos al concurso. ¡Que gane el mejor equipo!",keys:["q","p"]};
+try{var raw=localStorage.getItem("concurso_v1");if(raw){var o=JSON.parse(raw);if(o&&o.qs&&o.qs.length)S=o}}catch(e){}
+function save(){try{localStorage.setItem("concurso_v1",JSON.stringify(S))}catch(e){}}
+var $=function(i){return document.getElementById(i)};
+var G={qi:0,open:[],bank:0,err:0,sc:[0,0],first:null,locked:false,ei:0,cap:-1,max:3};
+var AC=null;
+function tone(f,d,t,dl){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=.15;o.connect(g);g.connect(AC.destination);var s=AC.currentTime+(dl||0);g.gain.setValueAtTime(.15,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.start(s);o.stop(s+d)}catch(e){}}
+var voices=[];
+function loadVoices(){try{voices=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang)});var s=$("vSel");s.innerHTML="";voices.forEach(function(v){var o=document.createElement("option");o.value=v.name;o.textContent=v.name+" ("+v.lang+")";s.appendChild(o)});if(S.vName)s.value=S.vName}catch(e){}}
+try{speechSynthesis.onvoiceschanged=loadVoices;loadVoices()}catch(e){}
+function say(t){
+  $("cap").textContent=t;
+  if(!S.voice||!("speechSynthesis" in window))return;
+  try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="es-MX";u.rate=S.rate||1;var v=voices.filter(function(x){return x.name===S.vName})[0]||voices[0];if(v){u.voice=v;u.lang=v.lang}speechSynthesis.speak(u)}catch(e){}
+}
+function cur(){return S.qs[G.qi]}
+function render(){
+  var c=cur();$("q").textContent=c.q;
+  var b=$("bd");b.innerHTML="";
+  c.a.forEach(function(a,i){
+    var o=G.open.indexOf(i)>-1;
+    var t=document.createElement("button");t.className="tile"+(o?" open":"");
+    var n=document.createElement("span"),l=document.createElement("span");n.className="n";n.textContent=i+1;l.className="l";
+    l.textContent=o?a[0]:"● ● ● ● ● ● ●";t.appendChild(n);t.appendChild(l);
+    if(o){var p=document.createElement("span");p.className="p";p.textContent=a[1];var sm=document.createElement("small");sm.textContent="puntos";p.appendChild(sm);t.appendChild(p)}
+    t.onclick=function(){reveal(i)};b.appendChild(t)});
+  var st=$("st");st.innerHTML="";for(var k=0;k<G.max;k++){var i=document.createElement("i");i.textContent="✕";if(k<G.err)i.className="on";st.appendChild(i)}
+  $("s0").textContent=G.sc[0];$("s1").textContent=G.sc[1];$("bk").textContent=G.bank;
+  $("tm0").className="team t1"+(G.first===0?" first":"");$("tm1").className="team t2"+(G.first===1?" first":"");
+  $("ttl").textContent=S.title||"CONCURSO EN VIVO";$("mqt").textContent=S.mq||"";$("mq").style.display=S.mq?"":"none";
+  $("keys").textContent="Pulsadores: equipo 1 = "+S.keys[0].toUpperCase()+", equipo 2 = "+S.keys[1].toUpperCase()+". Teclas 1–8 revelan respuestas.";
+}
+function reveal(i){
+  var a=cur().a[i];if(!a||G.open.indexOf(i)>-1)return;
+  G.open.push(i);G.bank+=a[1];tone(880,.15);tone(1320,.3,"sine",.15);
+  render();say("Respuesta "+(i+1)+": "+a[0]+". "+a[1]+" puntos.");
+}
+function revealNext(){for(var i=0;i<cur().a.length;i++){if(G.open.indexOf(i)<0){reveal(i);return}}say("Ya están todas las respuestas reveladas.")}
+function revealAll(){cur().a.forEach(function(_,i){if(G.open.indexOf(i)<0)G.open.push(i)});render();say("Estas eran todas las respuestas.")}
+function error(){
+  G.err=Math.min(G.err+1,G.max);tone(140,.6,"sawtooth");
+  var x=$("xx");x.className="x on";setTimeout(function(){x.className="x"},800);render();
+  say(G.err>=G.max?"Error. Son tres errores, pasa el turno al otro equipo.":"Error. Llevan "+G.err+(G.err===1?" error.":" errores."));
+}
+function award(t){var n=G.bank;G.sc[t]+=n;G.bank=0;tone(660,.2);tone(990,.4,"sine",.2);render();say("El equipo "+(t+1)+" gana "+n+" puntos. Marcador: "+G.sc[0]+" a "+G.sc[1]+".")}
+function buzz(t){if(G.locked)return;G.locked=true;G.first=t;tone(600,.25,"square");render();say("¡Equipo "+(t+1)+" respondió primero!")}
+function unlock(){G.locked=false;G.first=null;render();say("Pulsadores habilitados.")}
+function readQ(){say(cur().q+". Hay "+cur().a.length+" respuestas en el tablero.")}
+function nextQ(){G.qi=(G.qi+1)%S.qs.length;G.open=[];G.bank=0;G.err=0;G.first=null;G.locked=false;render();readQ()}
+function fs(){try{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen()}catch(e){}}
+function menu(on){$("menu").className=on?"on":"";if(on){fillMenu()}else{cap=null;render()}}
+var cap=null;
+function fillMenu(){
+  var s=$("sel");s.innerHTML="";S.qs.forEach(function(q,i){var o=document.createElement("option");o.value=i;o.textContent=(i+1)+". "+q.q.slice(0,60);s.appendChild(o)});
+  if(G.ei>=S.qs.length)G.ei=S.qs.length-1;s.value=G.ei;loadEd();
+  $("vOn").checked=S.voice;$("vRate").value=S.rate;$("mqIn").value=S.mq;$("ttIn").value=S.title||"CONCURSO EN VIVO";loadVoices();
+  $("k0").textContent="Equipo 1: "+S.keys[0].toUpperCase();$("k1").textContent="Equipo 2: "+S.keys[1].toUpperCase();
+}
+function loadEd(){var q=S.qs[G.ei];$("eq").value=q.q;$("ea").value=q.a.map(function(a){return a[0]+" | "+a[1]}).join("\n");$("emsg").textContent=""}
+function parseEd(){
+  var q=$("eq").value.trim();if(!q)return{err:"Escribe el texto de la pregunta."};
+  var out=[],ls=$("ea").value.split("\n");
+  for(var i=0;i<ls.length;i++){var l=ls[i].trim();if(!l)continue;var p=l.lastIndexOf("|");if(p<1)return{err:"La línea "+(i+1)+" necesita el formato: respuesta | puntos."};
+    var n=parseInt(l.slice(p+1),10);if(!(n>0))return{err:"La línea "+(i+1)+" tiene puntos inválidos."};out.push([l.slice(0,p).trim(),n])}
+  if(!out.length)return{err:"La pregunta necesita al menos una respuesta."};
+  if(out.length>8)return{err:"El máximo es de 8 respuestas."};
+  return{v:{q:q,a:out}}
+}
+$("sel").onchange=function(){G.ei=+this.value;loadEd()};
+$("eSave").onclick=function(){var r=parseEd();if(r.err){$("emsg").textContent=r.err;return}S.qs[G.ei]=r.v;save();if(G.ei===G.qi){G.open=[];G.bank=0}fillMenu();$("emsg").textContent="Pregunta guardada."};
+$("eNew").onclick=function(){S.qs.push({q:"Nueva pregunta",a:[["Respuesta 1",50],["Respuesta 2",30]]});G.ei=S.qs.length-1;save();fillMenu()};
+$("eDup").onclick=function(){S.qs.splice(G.ei+1,0,JSON.parse(JSON.stringify(S.qs[G.ei])));G.ei++;save();fillMenu()};
+$("eDel").onclick=function(){if(S.qs.length<2){$("emsg").textContent="Debe quedar al menos una pregunta.";return}S.qs.splice(G.ei,1);G.ei=0;G.qi=0;G.open=[];G.bank=0;save();fillMenu()};
+$("vOn").onchange=function(){S.voice=this.checked;if(!S.voice){try{speechSynthesis.cancel()}catch(e){}}save()};
+$("vSel").onchange=function(){S.vName=this.value;save()};
+$("vRate").oninput=function(){S.rate=+this.value;save()};
+$("vTest").onclick=function(){say("Hola, soy el conductor virtual. Bienvenidos al concurso.")};
+$("mqIn").oninput=function(){S.mq=this.value;save()};
+$("ttIn").oninput=function(){S.title=this.value;save()};
+$("mReset").onclick=function(){if(confirm("Se reemplazarán todas las preguntas por las de ejemplo. ¿Continuar?")){S.qs=JSON.parse(JSON.stringify(DEF));G.qi=0;G.open=[];G.bank=0;save();fillMenu()}};
+[0,1].forEach(function(t){$("kc"+t).onclick=function(){cap=t;$("kmsg").textContent="Presiona la tecla que deseas usar para el equipo "+(t+1)+"…"}});
+$("mClose").onclick=function(){menu(false)};
+$("bRead").onclick=readQ;$("bNext1").onclick=revealNext;$("bErr").onclick=error;$("bA0").onclick=function(){award(0)};$("bA1").onclick=function(){award(1)};
+$("bUnlock").onclick=unlock;$("bAll").onclick=revealAll;$("bQ").onclick=nextQ;$("bFs").onclick=fs;$("bMenu").onclick=function(){menu(true)};
+document.addEventListener("keydown",function(e){
+  var tg=e.target&&e.target.tagName,typing=/INPUT|TEXTAREA|SELECT/.test(tg||"");
+  if(cap!==null&&!typing){e.preventDefault();var k=e.key.toLowerCase();if(k==="escape"){cap=null;$("kmsg").textContent="";return}
+    if(k.length!==1){$("kmsg").textContent="Elige una letra o un número.";return}
+    if(S.keys[1-cap]===k){$("kmsg").textContent="Esa tecla ya la usa el otro equipo.";return}
+    S.keys[cap]=k;save();cap=null;$("kmsg").textContent="Tecla guardada.";fillMenu();return}
+  if(e.key==="Escape"){if($("menu").className==="on")menu(false);return}
+  if(typing||e.ctrlKey||e.metaKey||e.altKey)return;
+  var k=e.key.toLowerCase();
+  if($("menu").className==="on")return;
+  if(k==="m"){menu(true);return}
+  if(k===S.keys[0]){buzz(0);return}if(k===S.keys[1]){buzz(1);return}
+  if(/^[1-8]$/.test(k)){reveal(+k-1);return}
+  if(k===" "){e.preventDefault();revealNext()}else if(k==="x")error();else if(k==="r")unlock();else if(k==="l")readQ();else if(k==="f")fs();else if(k==="arrowright")nextQ();
+});
+render();
+</script>
+</body>
+</html>
